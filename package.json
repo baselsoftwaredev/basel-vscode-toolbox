@@ -1,7 +1,8 @@
 {
-    "name": "your-extension-name",
-    "displayName": "Your Extension Name",
-    "description": "Your extension description",
+    "name": "basel-vscode-toolbox",
+    "displayName": "Basel vscode toolbox",
+    "description": "Various tools for my vscode dev.",
+    "publisher": "baselsoftwaredev",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.95.0"
@@ -12,7 +13,7 @@
     "main": "./out/extension.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/your-username/your-repository.git"
+        "url": "https://github.com/baselsoftwaredev/basel-vscode-toolbox.git"
     },
     "contributes": {
         "commands": [
@@ -34,20 +35,25 @@
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js"
+        "lint": "eslint src --ext ts --fix",
+        "test": "npm run compile && node ./out/test/runTest.js",
+        "build": "npm run lint && npm run compile && vsce package"
     },
     "devDependencies": {
         "@types/glob": "^7.1.3",
-        "@types/mocha": "^8.2.2",
+        "@types/mocha": "^8.2.3",
         "@types/node": "14.x",
         "@types/vscode": "^1.95.0",
-        "@typescript-eslint/eslint-plugin": "^4.28.2",
-        "@typescript-eslint/parser": "^4.28.2",
-        "eslint": "^7.29.0",
+        "@typescript-eslint/eslint-plugin": "^8.16.0",
+        "@typescript-eslint/parser": "^8.16.0",
+        "eslint": "^8.57.1",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-n": "^16.6.2",
+        "eslint-plugin-promise": "^6.6.0",
         "glob": "^7.1.7",
         "mocha": "^8.4.0",
         "typescript": "^4.3.5",
-        "vscode-test": "^1.5.2"
+        "vscode-test": "^1.6.1"
     }
 }
