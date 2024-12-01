@@ -8,7 +8,7 @@
         "vscode": "^1.95.0"
     },
     "activationEvents": [
-        
+        "onCommand:extension.splitEditorRightLimited"
     ],
     "main": "./out/extension.js",
     "repository": {
@@ -23,6 +23,11 @@
             }
         ],
         "keybindings": [
+            {
+                "command": "extension.splitEditorRightLimited",
+                "key": "cmd+r",
+                "when": "editorTextFocus"
+            },
             {
                 "command": "extension.splitEditorRightLimited",
                 "key": "cmd+t",
