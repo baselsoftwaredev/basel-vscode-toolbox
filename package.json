@@ -8,7 +8,6 @@
         "vscode": "^1.95.0"
     },
     "activationEvents": [
-        "onCommand:extension.splitEditorRightLimited"
     ],
     "main": "./out/extension.js",
     "repository": {
