@@ -203,5 +203,8 @@
     "mocha": "^8.4.0",
     "typescript": "^4.3.5",
     "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "@vscode-elements/elements": "^2.5.1"
   }
 }

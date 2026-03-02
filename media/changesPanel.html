@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--
+    Tokens substituted at runtime by ChangesPanel.ts:
+      {{CSP_SOURCE}}   – webview.cspSource
+      {{BUNDLED_URI}}  – @vscode-elements/elements dist/bundled.js
+      {{CSS_URI}}      – media/changesPanel.css
+      {{SCRIPT_URI}}   – media/changesPanel.js
+      {{ICON_MAP}}     – JSON object: { "ext:ts": "vscode-resource://…", … }
+  -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none';
+                 img-src {{CSP_SOURCE}} data:;
+                 style-src {{CSP_SOURCE}} 'unsafe-inline';
+                 script-src {{CSP_SOURCE}} 'unsafe-inline';
+                 font-src {{CSP_SOURCE}};" />
+  <link rel="stylesheet" href="{{CSS_URI}}" />
+  <script type="module" src="{{BUNDLED_URI}}"></script>
+  <!-- Inject dynamic data before the main script runs -->
+  <script>window.__ICON_MAP__ = {{ICON_MAP}};</script>
+</head>
+<body>
+
+  <div class="toolbar">
+    <span class="toolbar-title">Changes</span>
+    <vscode-button id="refreshBtn" appearance="icon" title="Refresh">&#x21BB;</vscode-button>
+  </div>
+
+  <div class="select-bar">
+    <vscode-checkbox id="selectAll">All</vscode-checkbox>
+    <span class="count-badge-wrap">
+      <vscode-badge id="countBadge">0</vscode-badge>
+    </span>
+  </div>
+
+  <div class="file-list-wrap" id="fileList">
+    <div class="empty-state">Loading&hellip;</div>
+  </div>
+
+  <div class="bottom-panel">
+    <vscode-textarea id="commitMsg" placeholder="Commit message…" rows="3" resize="vertical"></vscode-textarea>
+    <div class="action-row">
+      <vscode-button id="commitBtn" disabled>Commit</vscode-button>
+      <vscode-button id="shelveBtn" secondary disabled>Shelve&hellip;</vscode-button>
+    </div>
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script src="{{SCRIPT_URI}}"></script>
+</body>
+</html>
